@@ -693,6 +693,7 @@ form button:hover {
   text-decoration: none;
   transition: background-color 0.3s ease;
   position: relative;
+  z-index: 3001;
   overflow: hidden;
   background: linear-gradient(
     90deg,
@@ -704,6 +705,8 @@ form button:hover {
   );
   background-size: 200% 100%;
   animation: shimmer 3s infinite;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .media-kit-link:hover {
