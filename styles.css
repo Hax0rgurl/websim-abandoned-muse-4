@@ -43,6 +43,11 @@ section.slider.nav#home {
   min-height: 50vh;
   position: relative;
   z-index: 10;
+  pointer-events: none;
+}
+
+#home * {
+  pointer-events: auto;
 }
 
 /* Nav container */
@@ -683,6 +688,7 @@ form button:hover {
   text-align: center;
   margin-top: 1.5rem;
   pointer-events: auto;
+  isolation: isolate;
 }
 
 .media-kit-link {
