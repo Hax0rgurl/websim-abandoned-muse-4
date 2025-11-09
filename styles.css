@@ -141,6 +141,24 @@ section.slider.nav#home {
   white-space: nowrap;
 }
 
+.nav h1::after,
+.slider h1::after,
+.slider h2::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: shimmer 3s infinite;
+}
+
 .glitch {
   position: relative;
   color: #03dac6;
@@ -682,6 +700,7 @@ form button:hover {
 }
 
 /* Media kit button styling */
+.media-kit-btn,
 .media-kit-container {
   position: relative;
   z-index: 3000;
@@ -691,6 +710,7 @@ form button:hover {
   isolation: isolate;
 }
 
+.media-kit-btn,
 .media-kit-link {
   display: inline-block;
   padding: 0.6rem 1.2rem;
@@ -701,7 +721,7 @@ form button:hover {
   text-decoration: none;
   transition: background-color 0.3s ease;
   position: relative;
-  z-index: 3001;
+  z-index: 3000;
   overflow: hidden;
   background: linear-gradient(
     90deg,
@@ -717,6 +737,7 @@ form button:hover {
   cursor: pointer;
 }
 
+.media-kit-btn:hover,
 .media-kit-link:hover {
   background-color: rgba(0, 240, 255, 0.2);
 }

@@ -1,5 +1,40 @@
 import { UI, initParticles } from "./config.js";
 
+/* Section Loader */
+async function loadSections() {
+  const sections = ['home', 'books', 'video', 'gallery', 'music', 'blog', 'about', 'contact', 'footer'];
+  const container = document.getElementById('content-container');
+  
+  for (const section of sections) {
+    try {
+      const response = await fetch(`sections/${section}.html`);
+      const html = await response.text();
+      
+      if (section === 'home') {
+        container.insertAdjacentHTML('afterbegin', html);
+      } else if (section === 'footer') {
+        container.insertAdjacentHTML('beforeend', html);
+      } else {
+        const main = container.querySelector('.main') || (() => {
+          const mainEl = document.createElement('main');
+          mainEl.className = 'main';
+          container.appendChild(mainEl);
+          return mainEl;
+        })();
+        main.insertAdjacentHTML('beforeend', html);
+      }
+    } catch (error) {
+      console.error(`Error loading ${section}:`, error);
+    }
+  }
+  
+  // Reinitialize Flickr embeds
+  const script = document.createElement('script');
+  script.src = '//embedr.flickr.com/assets/client-code.js';
+  script.async = true;
+  document.body.appendChild(script);
+}
+
 /* Navigation */
 class NavigationPage {
   constructor() {
@@ -38,7 +73,7 @@ class NavigationPage {
     const headerHeight = UI.headerHeight;
     if (window.pageYOffset > headerHeight) this.navContainer.classList.add("nav-container--scrolled");
     else this.navContainer.classList.remove("nav-container--scrolled");
-    const offset = this.nav.offsetTop + this.nav.offsetHeight - this.tabContainerHeight - headerHeight;
+    const offset = this.nav?.offsetTop + this.nav?.offsetHeight - this.tabContainerHeight - headerHeight;
     if (window.pageYOffset > this.lastScroll && window.pageYOffset > offset) {
       this.navContainer.classList.add("nav-container--move-up");
       this.navContainer.classList.remove("nav-container--top-first");
@@ -56,6 +91,7 @@ class NavigationPage {
     this.navTabs.forEach((tab) => {
       const id = tab.getAttribute("href");
       const section = document.querySelector(id);
+      if (!section) return;
       const offsetTop = section.offsetTop - this.tabContainerHeight;
       const offsetBottom = section.offsetTop + section.offsetHeight - this.tabContainerHeight;
       if (window.pageYOffset > offsetTop && window.pageYOffset < offsetBottom) {
@@ -110,7 +146,8 @@ function setupTimestamps() {
 }
 
 /* Boot */
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  await loadSections();
   initParticles();
   new NavigationPage();
   setupLazyImages();
