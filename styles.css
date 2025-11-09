@@ -141,24 +141,6 @@ section.slider.nav#home {
   white-space: nowrap;
 }
 
-.nav h1::after,
-.slider h1::after,
-.slider h2::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.4) 50%,
-    transparent 100%
-  );
-  animation: shimmer 3s infinite;
-}
-
 .glitch {
   position: relative;
   color: #03dac6;
@@ -700,46 +682,41 @@ form button:hover {
 }
 
 /* Media kit button styling */
-.media-kit-btn,
-.media-kit-container {
+.media-kit-btn {
   position: relative;
   z-index: 3000;
-  text-align: center;
-  margin-top: 1.5rem;
   pointer-events: auto;
-  isolation: isolate;
+  display: inline-block;
+  border: 1px solid #03dac6;
+  padding: 0.6rem 1.2rem;
+  color: #03dac6;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.media-kit-btn,
-.media-kit-link {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  border: 1px solid #00f0ff;
-  border-radius: 4px;
-  color: #00f0ff;
-  font-family: 'Orbitron', sans-serif;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-  position: relative;
-  z-index: 3000;
-  overflow: hidden;
+.media-kit-btn:hover {
+  background-color: rgba(3, 218, 198, 0.2);
+  box-shadow: 0 0 15px #03dac6;
+}
+
+/* Shimmer animation for headings */
+h1.glitch,
+.slider h1,
+.nav h1 {
   background: linear-gradient(
     90deg,
-    transparent 0%,
-    transparent 40%,
-    rgba(0, 240, 255, 0.3) 50%,
-    transparent 60%,
-    transparent 100%
+    #03dac6 0%,
+    #ff0266 25%,
+    #faebd7 50%,
+    #ff0266 75%,
+    #03dac6 100%
   );
-  background-size: 200% 100%;
-  animation: shimmer 3s infinite;
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-.media-kit-btn:hover,
-.media-kit-link:hover {
-  background-color: rgba(0, 240, 255, 0.2);
+  background-size: 1000px 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
 }
 
 /* Responsiveness */
@@ -827,9 +804,9 @@ form button:hover {
 /* Shimmer effect keyframes */
 @keyframes shimmer {
   0% {
-    background-position: -200% center;
+    background-position: -500px 0;
   }
   100% {
-    background-position: 200% center;
+    background-position: 500px 0;
   }
 }
