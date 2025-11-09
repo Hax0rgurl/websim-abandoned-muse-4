@@ -77,7 +77,7 @@ class NavigationPage {
 /* Lazy loading for blog images */
 function setupLazyImages() {
   const images = document.querySelectorAll("img[data-src]");
-  if (!(["IntersectionObserver"].includes("IntersectionObserver"))) {
+  if (!("IntersectionObserver" in window)) {
     images.forEach((img) => { img.src = img.dataset.src; img.removeAttribute("data-src"); });
     return;
   }
