@@ -677,7 +677,7 @@ form button:hover {
 /* Media kit button styling */
 .media-kit-container {
   position: relative;
-  z-index: 2000;
+  z-index: 3000;
   text-align: center;
   margin-top: 1.5rem;
   pointer-events: auto;
