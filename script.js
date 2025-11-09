@@ -109,29 +109,10 @@ function setupTimestamps() {
   setInterval(updateTimestamps, 1000);
 }
 
-/* Optional: Dynamic loader for modular sections */
-function loadModularSections() {
-  const sections = ["home", "books", "video", "gallery", "music", "blog", "about", "contact"];
-  const main = document.querySelector(".main");
-
-  sections.forEach(id => {
-    fetch(`sections/${id}.html`)
-      .then(res => res.text())
-      .then(html => {
-        const wrapper = document.createElement("div");
-        wrapper.innerHTML = html;
-        main.appendChild(wrapper);
-      })
-      .catch(err => console.error(`Error loading ${id}.html:`, err));
-  });
-}
-
 /* Boot */
 document.addEventListener("DOMContentLoaded", () => {
   initParticles();
   new NavigationPage();
   setupLazyImages();
   setupTimestamps();
-  // Uncomment below to enable modular section loading:
-  // loadModularSections();
 });
