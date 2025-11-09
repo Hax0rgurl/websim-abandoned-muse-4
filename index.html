@@ -8,773 +8,9 @@
   <meta name="author" content="Abandoned Muse">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap" rel="style">
-  <style>
-    /* Global styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: "Roboto", sans-serif;
-      background-color: #1e1f26;
-      color: #faebd7;
-    }
-
-    /* Update the spacing for the hero section */
-    section.slider.nav#home {
-      margin-bottom: 20px; /* Reduced from 40px */
-    }
-
-    /* Update main content spacing */
-    .main {
-      padding-top: 20px; /* Reduced from 75px */
-    }
-
-    /* Update general section spacing */
-    .nav,
-    .slider {
-      margin: 20px auto; /* Standardize margins between sections */
-    }
-
-    /* First section after nav should have less top margin */
-    .main section:first-child {
-      margin-top: 0;
-    }
-
-    /* Update main content width and centering */
-    .main {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .nav,
-    .slider {
-      max-width: 1000px;
-      width: calc(100% - 40px);
-      margin: 85px auto 20px;
-    }
-
-    /* Update nav-container positioning and style */
-    .nav-container {
-      display: flex;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      max-width: none;
-      height: 75px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-      background: #1e1f26;
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 0 20px;
-    }
-
-    /* Make all content sections consistent */
-    .slider {
-      padding: 4em 2em;
-      background: rgba(30, 31, 38, 0.95);
-      border: 1px solid #03dac6;
-      border-radius: 8px;
-      box-shadow: 0 0 20px rgba(3, 218, 198, 0.2);
-      min-height: auto;
-      max-width: calc(100% - 40px);
-      backdrop-filter: blur(5px);
-    }
-
-    /* Add dividers between sections */
-    .slider:not(:last-child) {
-      margin-bottom: 30px;
-    }
-
-    /* Navigation and Slider */
-    .nav,
-    .slider {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      position: relative;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .nav::before,
-    .slider::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        to bottom,
-        transparent 50%,
-        rgba(255, 255, 255, 0.1) 50%
-      );
-      background-size: 100% 4px;
-      z-index: 2;
-      pointer-events: none;
-      animation: scanline 8s linear infinite;
-    }
-
-    @keyframes scanline {
-      0% {
-        background-position: 0 0;
-      }
-      100% {
-        background-position: 0 100%;
-      }
-    }
-
-    .nav h1,
-    .slider h1 {
-      font-family: "Orbitron", sans-serif;
-      font-size: 5vw;
-      margin: 0;
-      padding-bottom: 0.5rem;
-      letter-spacing: 0.5rem;
-      color: #03dac6;
-      transition: all 0.3s ease;
-      z-index: 3;
-      text-shadow: 0 0 5px #03dac6, 0 0 10px #03dac6, 0 0 20px #03dac6,
-        0 0 40px #ff0266, 0 0 80px #ff0266, 0 0 90px #ff0266, 0 0 100px #ff0266,
-        0 0 150px #ff0266;
-      animation: textShadow 1.6s infinite;
-      position: relative;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    /* Update the glitch effect to prevent doubling */
-    .glitch:before,
-    .glitch:after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    @keyframes textShadow {
-      0% {
-        text-shadow: 0.4389924193300864px 0 1px rgba(0, 30, 255, 0.5),
-          -0.4389924193300864px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      5% {
-        text-shadow: 2.7928974010788217px 0 1px rgba(0, 30, 255, 0.5),
-          -2.7928974010788217px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      10% {
-        text-shadow: 0.02956275843481219px 0 1px rgba(0, 30, 255, 0.5),
-          -0.02956275843481219px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      15% {
-        text-shadow: 3.4794037899852017px 0 1px rgba(0, 30, 255, 0.5),
-          -3.4794037899852017px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      20% {
-        text-shadow: 1.6125630401149584px 0 1px rgba(0, 30, 255, 0.5),
-          -1.6125630401149584px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      25% {
-        text-shadow: 0.7015590085143956px 0 1px rgba(0, 30, 255, 0.5),
-          -0.7015590085143956px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      30% {
-        text-shadow: 3.896914047650351px 0 1px rgba(0, 30, 255, 0.5),
-          -3.896914047650351px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      35% {
-        text-shadow: 2.231056963361899px 0 1px rgba(0, 30, 255, 0.5),
-          -2.231056963361899px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      40% {
-        text-shadow: 0.08084290417898504px 0 1px rgba(0, 30, 255, 0.5),
-          -0.08084290417898504px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      45% {
-        text-shadow: 2.3758461067427543px 0 1px rgba(0, 30, 255, 0.5),
-          -2.3758461067427543px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      50% {
-        text-shadow: 2.202193051050636px 0 1px rgba(0, 30, 255, 0.5),
-          -2.202193051050636px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      55% {
-        text-shadow: 2.8638780614874975px 0 1px rgba(0, 30, 255, 0.5),
-          -2.8638780614874975px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      60% {
-        text-shadow: 0.48874025155497314px 0 1px rgba(0, 30, 255, 0.5),
-          -0.48874025155497314px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      65% {
-        text-shadow: 1.8948491305757957px 0 1px rgba(0, 30, 255, 0.5),
-          -1.8948491305757957px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      70% {
-        text-shadow: 0.0833037308038857px 0 1px rgba(0, 30, 255, 0.5),
-          -0.0833037308038857px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      75% {
-        text-shadow: 0.09769827255241735px 0 1px rgba(0, 30, 255, 0.5),
-          -0.09769827255241735px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      80% {
-        text-shadow: 3.443339761481782px 0 1px rgba(0, 30, 255, 0.5),
-          -3.443339761481782px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      85% {
-        text-shadow: 2.1841838852799786px 0 1px rgba(0, 30, 255, 0.5),
-          -2.1841838852799786px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-      100% {
-        text-shadow: 2.6208764473832513px 0 1px rgba(0, 30, 255, 0.5),
-          -2.6208764473832513px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
-      }
-    }
-
-    .slider h2,
-    .nav h2,
-    .nav-tab {
-      font-family: "Orbitron", sans-serif;
-      font-size: 2vw;
-      letter-spacing: 0.3rem;
-      font-weight: 300;
-      color: #faebd7;
-      z-index: 4;
-    }
-
-    h3.span {
-      font-size: 2vw;
-      letter-spacing: 0.7em;
-      font-family: "Roboto", sans-serif;
-      font-weight: 300;
-      color: #faebd7;
-      z-index: 4;
-    }
-
-    span:hover {
-      color: #ff0266;
-      font-weight: 500;
-      font-size: 2.2vw;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* Update the nav-tab styles for better responsiveness */
-    .nav-tab {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #03dac6;
-      letter-spacing: 0.1rem;
-      transition: all 0.5s ease;
-      font-size: 16px;
-      padding: 0 15px;
-      white-space: nowrap;
-      min-width: fit-content;
-    }
-
-    .nav-tab:hover {
-      color: #1e1f26;
-      background: #03dac6;
-    }
-
-    .nav-tab-slider {
-      position: absolute;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background: #03dac6;
-      transition: left 0.3s ease;
-    }
-
-    /* Background */
-    .background {
-      position: absolute;
-      height: 100vh;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 0;
-    }
-
-    /* Blog */
-    .blog-post {
-      max-width: 800px; /* Constrain the width */
-      margin: 2em auto; /* Center the container */
-      padding: 0 1em; /* Add horizontal padding */
-      text-align: left; /* Left-align text */
-    }
-
-    .blog-post h3 {
-      font-size: 2em;
-      color: #03dac6;
-      margin-bottom: 0.5em; /* Space below the heading */
-    }
-
-    .blog-post img {
-      width: 100%; /* Image fills the container width */
-      height: auto;
-      margin-bottom: 1em; /* Space below the image */
-    }
-
-    .blog-post p {
-      margin-bottom: 1em; /* Space between paragraphs */
-      line-height: 1.6; /* Improve readability */
-    }
-
-    /* Video Gallery */
-    .video-gallery {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2em;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .video-gallery iframe {
-      border: 2px solid #03dac6;
-    }
-
-    /* Form */
-    form {
-      display: flex;
-      flex-direction: column;
-      max-width: 500px;
-      width: 100%;
-      margin: 0em auto;
-      gap: 0.5em;
-    }
-
-    form label {
-      font-size: 1.2em;
-    }
-
-    form input,
-    form textarea {
-      padding: 0.5em;
-      font-size: 1em;
-      border: 1px solid #03dac6;
-      background-color: #1e1f26;
-      color: #faebd7;
-    }
-
-    form button {
-      padding: 0.7em;
-      font-size: 1.2em;
-      color: #1e1f26;
-      background-color: #03dac6;
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    form button:hover {
-      background-color: #ff0266;
-    }
-
-    /* Books Gallery */
-    .books-gallery {
-      display: flex;
-      justify-content: center;
-      gap: 2em;
-      flex-wrap: wrap;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 1em;
-    }
-
-    .book-item {
-      text-align: center;
-    }
-
-    .book-item img {
-      width: auto;
-      height: 400px;
-      border: 2px solid #03dac6;
-      transition: transform 0.3s;
-    }
-
-    .book-item img:hover {
-      transform: scale(1.05);
-    }
-
-    /* Music Embeds */
-    .music-embeds {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2em;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2em;
-      justify-items: center;
-      align-items: center;
-    }
-
-    /* Footer Styles */
-    .social-footer {
-      background-color: #1e1f26;
-      padding: 2em;
-      text-align: center;
-    }
-
-    .social-footer .social-embeds {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2em;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2em;
-      justify-items: center;
-      align-items: center;
-    }
-
-    /* Glitch Effect */
-    .glitch {
-      position: relative;
-      color: #03dac6;
-      font-size: 5vw;
-      animation: glitch 1s linear infinite;
-    }
-
-    .glitch:before,
-    .glitch:after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      top: 0;
-    }
-
-    .glitch:before {
-      animation: glitchTop 1s linear infinite;
-      clip-path: polygon(
-        0 0,
-        100% 0,
-        100% 40%,
-        0 40%
-      ); /* Adjusted clip-path for more distinction */
-    }
-
-    .glitch:after {
-      animation: glitchBottom 1.5s linear infinite;
-      clip-path: polygon(
-        0 60%,
-        100% 60%,
-        100% 100%,
-        0 100%
-      ); /* Adjusted clip-path for more distinction */
-    }
-
-    /* Keyframe Animations */
-    @keyframes glitch {
-      2%,
-      64% {
-        transform: translate(2px, 0) skew(0deg);
-      }
-      4%,
-      60% {
-        transform: translate(-2px, 0) skew(0deg);
-      }
-      62% {
-        transform: translate(0, 0) skew(5deg);
-      }
-    }
-
-    @keyframes glitchTop {
-      2%,
-      64% {
-        transform: translate(2px, -3px); /* Slightly increased offset */
-      }
-      4%,
-      60% {
-        transform: translate(-2px, 3px); /* Slightly increased offset */
-      }
-      62% {
-        transform: translate(10px, -5px) skew(-10deg); /* More pronounced transformation */
-      }
-    }
-
-    @keyframes glitchBottom {
-      2%,
-      64% {
-        transform: translate(-2px, 2px); /* Slightly increased offset */
-      }
-      4%,
-      60% {
-        transform: translate(2px, -2px); /* Slightly increased offset */
-      }
-      62% {
-        transform: translate(-15px, 8px) skew(15deg); /* More pronounced transformation */
-      }
-    }
-
-    /* Add top padding to slider sections */
-    .slider {
-      padding-top: 75px;
-    }
-
-    /* Media Queries */
-    @media (max-width: 800px) {
-      .gallery {
-        grid-template-columns: repeat(
-          2,
-          1fr
-        ) !important; /* Force 2 columns on tablets */
-        gap: 10px !important;
-        padding: 10px !important;
-      }
-
-      .cctv-container {
-        width: 100% !important;
-        max-width: none !important;
-      }
-
-      .cctv-container img {
-        width: 100% !important;
-        height: auto !important;
-        min-height: 112px !important;
-        object-fit: cover !important;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .gallery {
-        grid-template-columns: 1fr !important; /* Force single column on mobile */
-        gap: 15px !important;
-      }
-
-      .slider {
-        padding: 1.5em 1em !important;
-        margin: 75px 10px 15px !important;
-        width: calc(100% - 20px) !important;
-      }
-
-      .cctv-container {
-        margin-bottom: 15px !important;
-      }
-    }
-
-    /* Base container responsiveness */
-    .main,
-    .nav,
-    .slider {
-      width: 100% !important;
-      max-width: 1000px !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-      padding-left: 20px !important;
-      padding-right: 20px !important;
-      box-sizing: border-box !important;
-    }
-
-    @media (min-width: 1200px) {
-      .main,
-      .nav,
-      .slider {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-      }
-    }
-
-    /* Loader Animation */
-    .loader span {
-      color: #faebd7;
-      text-shadow: 0 0 0 #faebd7;
-      animation: loading 1s ease-in-out infinite alternate;
-    }
-
-    @keyframes loading {
-      to {
-        text-shadow: 20px 0 70px #ff0266;
-        color: #ff0266;
-      }
-    }
-
-    .loader span:nth-child(n) {
-      animation-delay: calc(0.1s * var(--n));
-    }
-
-    /* Gallery */
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1em;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 20px 40px 20px 20px;
-    }
-
-    .gallery img {
-      width: 250px;
-      height: 150px;
-      object-fit: cover;
-      border: 2px solid #03dac6;
-      transition: transform 0.3s;
-      filter: sepia(100%) hue-rotate(180deg) saturate(200%);
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    /* CCTV Styles */
-    .cctv-container {
-      position: relative;
-      background: #111;
-      padding: 15px;
-      border: 2px solid #222;
-      border-radius: 5px;
-    }
-
-    .cctv-header {
-      position: absolute;
-      top: 5px;
-      left: 10px;
-      color: #fff;
-      font-family: "Courier New", monospace;
-      font-size: 12px;
-      z-index: 2;
-      text-shadow: 0 0 2px #fff;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .recording-dot {
-      width: 8px;
-      height: 8px;
-      background: #f00;
-      border-radius: 50%;
-      animation: blink 1s infinite;
-    }
-
-    .cctv-timestamp {
-      position: absolute;
-      bottom: 5px;
-      right: 10px;
-      color: #fff;
-      font-family: "Courier New", monospace;
-      font-size: 12px;
-      z-index: 2;
-    }
-
-    @keyframes blink {
-      0% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-
-    .cctv-scan {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: rgba(255, 255, 255, 0.1);
-      animation: scan 3s linear infinite;
-    }
-
-    @keyframes scan {
-      0% {
-        transform: translateY(0);
-      }
-      100% {
-        transform: translateY(100%);
-      }
-    }
-
-    /* Footer Links */
-    .footer-links {
-      margin-top: 30px;
-      font-size: 14px;
-    }
-
-    .footer-links a {
-      color: #03dac6;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-
-    .footer-links a:hover {
-      color: #ff0266;
-    }
-
-    .footer-links .separator {
-      color: #03dac6;
-    }
-
-    /* Add to the existing CSS */
-    .bottom-footer {
-      background-color: #000;
-      color: #666;
-      height: 30px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 20px;
-      font-size: 12px;
-      position: relative;
-      z-index: 1001;
-    }
-
-    .bottom-footer a {
-      color: #888;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-
-    .bottom-footer a:hover {
-      color: #03dac6;
-    }
-
-    .bottom-footer .separator {
-      color: #444;
-      margin: 0 5px;
-    }
-    /* Media kit button styling */
-    .media-kit-container {
-      position: relative;
-      z-index: 2000;      /* ensures it’s above the canvas animation */
-      text-align: center;
-      margin-top: 1.5rem;
-      pointer-events: auto;
-    }
-
-    .media-kit-link {
-      display: inline-block;
-      padding: 0.6rem 1.2rem;
-      border: 1px solid #00f0ff;
-      border-radius: 4px;
-      color: #00f0ff;
-      font-family: 'Orbitron', sans-serif;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .media-kit-link:hover {
-      background-color: rgba(0, 240, 255, 0.2);
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap" rel="stylesheet">
+  <!-- tombstone: removed large inline <style> block -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- Navigation -->
@@ -790,7 +26,7 @@
   </div>
 
   <!-- Home Section -->
-  <section class="slider nav" id="home" style="min-height: 50vh; margin-bottom: 20px;">
+  <section class="slider nav" id="home">
     <h3 class="span loader">
       <span class="m" style="--n:1;">W</span>
       <span class="m" style="--n:2;">E</span>
@@ -805,22 +41,23 @@
     </h3>
     <h1 class="glitch" data-text="Abandoned Muse">Abandoned Muse</h1>
     <div class="media-kit-container">
-      <a href="abmediakit.pdf" class="media-kit-link" target="_blank" rel="noopener">Download Media Kit (PDF)</a>
+      <a href="abmediakit.pdf" class="media-kit-btn" target="_blank" rel="noopener">Download Media Kit</a>
     </div>
   </section>
-  <main class="main">
 
+  <main class="main">
     <!-- BOOKS Section -->
-    <section class="slider" id="tab-books" style="min-height: auto; padding: 2em;">
+    <!-- tombstone: removed inline styles from #tab-books -->
+    <section class="slider" id="tab-books">
       <h1 class="glitch" data-text="BOOKS">BOOKS</h1>
-      <h2 style="margin-bottom: 1em;">Abandoned Miami Books</h2>
-      <div class="books-gallery" style="padding: 0 1em;">
-          <a href="https://www.amazon.com/stores/author/B07VZ1QD4Z/allbooks">
-            <img src="book1.jpg" alt="Book cover" width="300" height="400">
-          </a>
-          <a href="https://www.amazon.com/stores/author/B07VZ1QD4Z/allbooks">
-            <img src="book2.jpg" alt="Book cover" width="300" height="400">
-          </a>
+      <h2 class="section-subtitle">Abandoned Miami Books</h2>
+      <div class="books-gallery">
+        <a href="https://www.amazon.com/stores/author/B07VZ1QD4Z/allbooks">
+          <img src="book1.jpg" alt="Book cover" width="300" height="400">
+        </a>
+        <a href="https://www.amazon.com/stores/author/B07VZ1QD4Z/allbooks">
+          <img src="book2.jpg" alt="Book cover" width="300" height="400">
+        </a>
       </div>
     </section>
 
@@ -829,12 +66,12 @@
       <h1 class="glitch" data-text="VIDEOS">VIDEOS</h1>
       <h2>Watch Our Latest Creations</h2>
       <div class="video-gallery">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/maI9GfFOkJQ?si=2nDwdfPO9JeiuYqn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/d-gbRyBxcCQ?si=T_tCD8CuTEmoV_06" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/9MZWpg7-0AE?si=aSvQQUodYwn9IDFa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/maI9GfFOkJQ?si=2nDwdfPO9JeiuYqn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/d-gbRyBxcCQ?si=T_tCD8CuTEmoV_06" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/9MZWpg7-0AE?si=aSvQQUodYwn9IDFa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
-      <div class="video-description" style="margin-top: 2em; text-align: left; max-width: 800px;">
-        <p style="margin-top: 1em;">Make sure to subscribe to the channel for weekly updates and new exploration videos!</p>
+      <div class="video-description">
+        <p>Make sure to subscribe to the channel for weekly updates and new exploration videos!</p>
       </div>
     </section>
 
@@ -842,8 +79,7 @@
     <section class="slider" id="tab-gallery">
       <h1 class="glitch" data-text="LIVE FEED">LIVE FEED</h1>
       <h2>CCTV MONITORING STATION</h2>
-      <div class="gallery" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; max-width: 800px;">
-        <!-- CCTV Camera Feeds -->
+      <div class="gallery grid-3">
         <!-- CAM_01 -->
         <div class="cctv-container">
           <div class="cctv-header">
@@ -851,7 +87,7 @@
             CAM_01 [RECORDING]
           </div>
           <div class="cctv-scan"></div>
-        <a data-flickr-embed="true" href="https://www.flickr.com/photos/musephotos/53676844300/in/photostream/" title="Untitled"><img src="https://live.staticflickr.com/65535/53676844300_08ec72afe1_m.jpg" width="200" height="112" alt="Untitled"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+          <a data-flickr-embed="true" href="https://www.flickr.com/photos/musephotos/53676844300/in/photostream/" title="Untitled"><img src="https://live.staticflickr.com/65535/53676844300_08ec72afe1_m.jpg" width="200" height="112" alt="Untitled"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
           <div class="cctv-timestamp" id="timestamp1"></div>
         </div>
         <!-- CAM_02 -->
@@ -861,7 +97,7 @@
             CAM_02 [RECORDING]
           </div>
           <div class="cctv-scan"></div>
-       <a data-flickr-embed="true" href="https://www.flickr.com/photos/musephotos/53658803601/in/photostream/" title="Sinkhole"><img src="https://live.staticflickr.com/65535/53658803601_28b918a9c5_m.jpg" width="200" height="112" alt="Sinkhole"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+          <a data-flickr-embed="true" href="https://www.flickr.com/photos/musephotos/53658803601/in/photostream/" title="Sinkhole"><img src="https://live.staticflickr.com/65535/53658803601_28b918a9c5_m.jpg" width="200" height="112" alt="Sinkhole"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
           <div class="cctv-timestamp" id="timestamp2"></div>
         </div>
         <!-- CAM_03 -->
@@ -871,7 +107,7 @@
             CAM_03 [RECORDING]
           </div>
           <div class="cctv-scan"></div>
-        <a data-flickr-embed="true" href="https://www.flickr.com/photos/musephotos/53657943407/in/photostream/" title="Untitled"><img src="https://live.staticflickr.com/65535/53657943407_5b05cfbc8a_m.jpg" width="200" height="112" alt="Untitled"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+          <a data-flickr-embed="true" href="https://www.flickr.com/photos/musephotos/53657943407/in/photostream/" title="Untitled"><img src="https://live.staticflickr.com/65535/53657943407_5b05cfbc8a_m.jpg" width="200" height="112" alt="Untitled"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
           <div class="cctv-timestamp" id="timestamp3"></div>
         </div>
         <!-- CAM_04 -->
@@ -881,7 +117,7 @@
             CAM_04 [RECORDING]
           </div>
           <div class="cctv-scan"></div>
-         <a data-flickr-embed="true" href="https://www.flickr.com/photos/musephotos/53326004443/in/photostream/" title="Untitled"><img src="https://live.staticflickr.com/65535/53326004443_d17875fba0_m.jpg" width="200" height="112" alt="Untitled"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+          <a data-flickr-embed="true" href="https://www.flickr.com/photos/musephotos/53326004443/in/photostream/" title="Untitled"><img src="https://live.staticflickr.com/65535/53326004443_d17875fba0_m.jpg" width="200" height="112" alt="Untitled"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
           <div class="cctv-timestamp" id="timestamp4"></div>
         </div>
         <!-- CAM_05 -->
@@ -891,7 +127,7 @@
             CAM_05 [RECORDING]
           </div>
           <div class="cctv-scan"></div>
-        <a data-flickr-embed="true" href="https://www.flickr.com/photos/musephotos/53326005253/in/photostream/" title="Untitled"><img src="https://live.staticflickr.com/65535/53326005253_b488356445_m.jpg" width="200" height="112" alt="Untitled"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+          <a data-flickr-embed="true" href="https://www.flickr.com/photos/musephotos/53326005253/in/photostream/" title="Untitled"><img src="https://live.staticflickr.com/65535/53326005253_b488356445_m.jpg" width="200" height="112" alt="Untitled"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
           <div class="cctv-timestamp" id="timestamp5"></div>
         </div>
         <!-- CAM_06 -->
@@ -901,9 +137,150 @@
             CAM_06 [RECORDING]
           </div>
           <div class="cctv-scan"></div>
-        <a data-flickr-embed="true" href="https://www.flickr.com/photos/musephotos/53602500521/in/photostream/" title="Untitled"><img src="https://live.staticflickr.com/65535/53602500521_ebcd1a0312_m.jpg" width="200" height="112" alt="Untitled"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+          <a data-flickr-embed="true" href="https://www.flickr.com/photos/musephotos/53602500521/in/photostream/" title="Untitled"><img src="https://live.staticflickr.com/65535/53602500521_ebcd1a0312_m.jpg" width="200" height="112" alt="Untitled"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
         </div>
         <!-- CAM_07 -->
         <div class="cctv-container">
           <div class="cctv-header">
-            <span class="<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+            <span class="recording-dot"></span>
+            CAM_07 [RECORDING]
+          </div>
+          <div class="cctv-scan"></div>
+          <a data-flickr-embed="true" href="https://www.flickr.com/photos/musephotos/53326004398/in/photostream/" title="Untitled"><img src="https://live.staticflickr.com/65535/53326004398_f39c2c82d3_m.jpg" width="200" height="112" alt="Untitled"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+          <div class="cctv-timestamp" id="timestamp7"></div>
+        </div>
+        <!-- CAM_08 -->
+        <div class="cctv-container">
+          <div class="cctv-header">
+            <span class="recording-dot"></span>
+            CAM_08 [RECORDING]
+          </div>
+          <div class="cctv-scan"></div>
+          <a data-flickr-embed="true" href="https://www.flickr.com/photos/musephotos/53326108869/in/photostream/" title="Untitled"><img src="https://live.staticflickr.com/65535/53326108869_d87b7031a6_m.jpg" width="200" height="112" alt="Untitled"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+          <div class="cctv-timestamp" id="timestamp8"></div>
+        </div>
+        <!-- CAM_09 -->
+        <div class="cctv-container">
+          <div class="cctv-header">
+            <span class="recording-dot"></span>
+            CAM_09 [RECORDING]
+          </div>
+          <div class="cctv-scan"></div>
+          <a data-flickr-embed="true" href="https://www.flickr.com/photos/musephotos/53298423141/" title="Untitled"><img src="https://live.staticflickr.com/65535/53298423141_72726a8d18_m.jpg" width="200" height="112" alt="Untitled"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+          <div class="cctv-timestamp" id="timestamp9"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MUSIC Section -->
+    <!-- tombstone: removed inline styles from #tab-music -->
+    <section class="slider" id="tab-music">
+      <h1 class="glitch" data-text="MUSIC">MUSIC</h1>
+      <h2>Listen to My Music</h2>
+      <div class="music-embeds">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0X8twmNc81cZrPa8glQ7xI?utm_source=generator" width="350" height="152" frameborder="0" allowfullscreen loading="lazy"></iframe>
+        <iframe width="340" height="152" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1653730545"></iframe>
+      </div>
+    </section>
+
+    <!-- BLOG Section -->
+    <section class="slider" id="tab-blog">
+      <h1 class="glitch" data-text="BLOG">BLOG</h1>
+      <h2>Latest Musings</h2>
+      <article class="blog-post">
+        <img data-src="https://static.wixstatic.com/media/128e2e_cc68e828a62c4b4e85af98d8aa5a1b97~mv2.jpeg" alt="Blog Image">
+        <h3><a href="https://tvelazcowriter.wixsite.com/main/post/the-scariest-abandoned-places-in-the-world">THE SCARIEST ABANDONED PLACES IN THE WORLD</a></h3>
+        <p>Have you ever been curious about abandoned places? Do you love the thrill of urban exploring and uncovering forgotten stories? Then join me!</p>
+        <a href="https://tvelazcowriter.wixsite.com/main/post/the-scariest-abandoned-places-in-the-world">Read more</a>
+      </article>
+      <article class="blog-post">
+        <img data-src="https://static.wixstatic.com/media/128e2e_23ac73a05f93478abfe8d7a2d81a60c9~mv2_d_2560_1920_s_2.png/v1/fill/w_2560,h_1920,al_c,q_90/128e2e_23ac73a05f93478abfe8d7a2d81a60c9~mv2_d_2560_1920_s_2.webp" alt="Blog Image">
+        <h3><a href="https://tvelazcowriter.wixsite.com/main/post/2018/04/03/out-of-body-dreams-and-the-black-eyed-children">OUT OF BODY DREAMS</a></h3>
+        <p>When I was younger, I used to meditate a lot. It got to a point where I got pretty good at it. I was able to go out of body several...</p>
+        <a href="https://tvelazcowriter.wixsite.com/main/post/2018/04/03/out-of-body-dreams-and-the-black-eyed-children">Read more</a>
+      </article>
+      <article class="blog-post">
+        <img data-src="https://static.wixstatic.com/media/128e2e_ca7320fa497c495f9725f7a0abbd27aa~mv2_d_3724_2096_s_2.jpg/v1/fill/w_3724,h_2096,al_c,q_90/128e2e_ca7320fa497c495f9725f7a0abbd27aa~mv2_d_3724_2096_s_2.webp" alt="Blog Image">
+        <h3><a href="https://tvelazcowriter.wixsite.com/main/post/2018/04/03/how-to-develop-black-and-white-film">HOW TO DEVELOP BLACK AND WHITE FILM</a></h3>
+        <p>This recipe is for 2 rolls of Tri-X 400 film. 8oz dektol 8oz water 72 degrees Timer at 8 minutes 15 seconds twist and invert Then leave...</p>
+        <a href="https://tvelazcowriter.wixsite.com/main/post/2018/04/03/how-to-develop-black-and-white-film">Read more</a>
+      </article>
+    </section>
+
+    <!-- ABOUT Section -->
+    <!-- tombstone: removed inline styles from #tab-about -->
+    <section class="slider about-section" id="tab-about">
+      <h1 class="glitch" data-text="ABOUT">ABOUT</h1>
+      <h2 class="section-subtitle">Welcome to Abandoned Muse</h2>
+      <div class="about-copy">
+        <p>
+          Abandoned Muse is a liminal and abandoned artist that has been exploring abandoned places since 2004.
+        </p>
+        <p>
+          I have a profound fascination with abandoned places and liminal spaces—those transient realms that exist on the threshold between the familiar and the unknown. Our journeys lead us through desolate buildings, overgrown structures, and silent corridors where time seems to stand still. By exploring these spaces, we seek to unveil the hidden narratives etched into their walls and the echoes of lives once lived.
+        </p>
+        <p>
+          Liminal places captivate us with their ambiguity and sense of transition. They are the in-between moments and locations that challenge our perceptions and inspire introspection. Through our art, we aim to capture the ephemeral beauty of these environments, inviting you to step into the void and embrace the unknown.
+        </p>
+      </div>
+      <p>
+        <iframe width="500" height="300" src="https://www.youtube.com/embed/8uQYUviGHAA?si=QDrdvgnitOvCwMZV" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+      </p>
+    </section>
+
+    <!-- CONTACT Section -->
+    <!-- tombstone: removed inline styles from #tab-contact -->
+    <section class="slider" id="tab-contact">
+      <h1 class="glitch" data-text="CONTACT">CONTACT</h1>
+      <h2>Get in Touch with Us</h2>
+      <form action="https://www.abandonedmuse.com/contact.php" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required="">
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required="">
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required=""></textarea>
+        
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Background Canvas -->
+  <canvas class="background" aria-hidden="true"></canvas>
+
+  <!-- Footer -->
+  <!-- tombstone: removed inline styles from footer -->
+  <footer class="slider social-footer-wrapper">
+    <h1 class="glitch" data-text="SOCIAL">SOCIAL</h1>
+    <div class="social-embeds">
+      <div class="twitter-feed">
+        <a class="twitter-timeline" data-width="340" data-height="500" data-theme="dark" data-chrome="transparent noheader" href="https://twitter.com/_abandonedmuse" data-tweet-limit="3">Latest Tweets by @_abandonedmuse_</a>
+      </div>
+      <div class="spacer"></div>
+      <div class="twitter-follow">
+        <a href="https://www.x.com/_abandonedmuse_" class="twitter-follow-button" data-size="large" data-show-count="true">Follow @_abandonedmuse</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bottom Footer -->
+  <div class="bottom-footer">
+    <a href="https://abandonedmuse.com/privacy.html">Privacy Policy</a>
+    <span class="separator">|</span>
+    <a href="https://abandonedmuse.com/terms.html">Terms of Service</a>
+    <span class="separator">|</span>
+    <span> 2024</span>
+  </div>
+
+  <!-- External JavaScript Files -->
+  <!-- tombstone: moved external scripts out of .bottom-footer container -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js" integrity="sha512-jq8sZI0I9Og0nnZ+CfJRnUzNSDKxr/5Bvha5bn7AHzTnRyxUfpUArMzfH++mwE/hb2efOo1gCAgI+1RMzf8F7g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script type="module" src="config.js"></script>
+  <script type="module" src="script.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
